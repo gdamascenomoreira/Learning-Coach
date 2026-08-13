@@ -1,4 +1,6 @@
-def get_response(system_prompt, user_prompt):
+from openai import OpenAI
+
+def get_response(client, model_name, system_prompt, user_prompt):
 
     response = client.responses.create(
         model=model_name,
