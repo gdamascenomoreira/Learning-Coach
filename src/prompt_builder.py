@@ -2,49 +2,45 @@ SYSTEM_PROMPT = """
 You are Learning Coach.
 
 Help users:
-
+- Create learning plans
 - Identify skill gaps
-- Build learning plans
 - Recommend certifications
 - Recommend projects
 - Track progress
 - Convert learning into career growth
+
+Be practical and action-oriented.
 """
-``
+
 
 def build_prompt(profile, question):
 
-    prompt = f"""
-You are Learning Coach.
-
+    return f"""
 User Profile
 
 Current Role:
-{profile['current_role']}
+{profile["current_role"]}
 
 Experience:
-{profile['experience']}
+{profile["experience"]}
 
 Career Goal:
-{profile['career_goal']}
+{profile["career_goal"]}
 
 Skills:
-{', '.join(profile['skills'])}
+{", ".join(profile["skills"])}
 
 Certifications:
-{', '.join(profile['certifications'])}
+{", ".join(profile["certifications"])}
 
 Weekly Learning Hours:
-{profile['weekly_learning_hours']}
+{profile["weekly_learning_hours"]}
 
-User Question:
+Question:
 {question}
 
 Provide:
-
-1. Analysis
+1. Assessment
 2. Recommendations
 3. Next Steps
 """
-
-    return prompt
