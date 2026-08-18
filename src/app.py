@@ -1,27 +1,20 @@
-from profile_manager import load_profile
-from prompt_builder import SYSTEM_PROMPT, build_prompt
-from ai_client import get_response
+from profile_manager import (
+    profile_exists,
+    create_profile,
+    save_profile,
+    load_profile
+)
 
+if not profile_exists():
 
-def main():
+    profile = create_profile()
+
+    save_profile(profile)
+
+else:
 
     profile = load_profile()
 
-    question = input("Ask Learning Coach: ")
-
-    prompt = build_prompt(profile, question)
-
-    print()
-    print("Learning Coach is thinking...")
-    print()
-
-    answer = get_response(
-        SYSTEM_PROMPT,
-        prompt
-    )
-
-    print(answer)
-
-
-if __name__ == "__main__":
-    main()
+print()
+print("Loaded Profile:")
+print(profile)
