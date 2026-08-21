@@ -2,7 +2,8 @@ from profile_manager import (
     profile_exists,
     create_profile,
     save_profile,
-    load_profile
+    load_profile,
+    show_profile_summary
 )
 
 from prompt_builder import SYSTEM_PROMPT, build_prompt
@@ -25,11 +26,7 @@ def main():
 
     profile = get_profile()
 
-    print()
-    print(f"Welcome, {profile.get('name', 'there')}!")
-    print(f"Current role: {profile.get('current_role', 'Not provided')}")
-    print(f"Career goal: {profile.get('career_goal', 'Not provided')}")
-    print()
+    show_profile_summary(profile)
 
     question = input("Ask Learning Coach: ")
 
